@@ -113,7 +113,7 @@ shape_ordinary_procrustes <- function(reference_shape, eigenvectors = NULL, shap
   return(opa)
 }
 
-# ordinary_procrustes function: performs the Ordinary Procrustes Analysis (OPA) given as input a dataframe with the coordinates of the landmarks and the reference shape
+# ordinary_procrustes function: performs the Ordinary Procrustes Analysis (OPA) for multiple patients (given an input a dataframe with the coordinates of the landmarks) and the reference shape
 # Input:    - df_coordinates - dataframe with the coordinates of the landmarks (in the format x1, y1, x2, y2, ...)
 #           - eigenvectors - eigenvectors of the PCA
 #           - reference_shape - the reference shape (mean shape of the cluster) in the form of a matrix
