@@ -80,19 +80,8 @@ array_matrix_to_df <- function(array_matrix, colnames, rownames) {
 #           - shape - the shape of the new data point
 # Output:   - opa - list with the results of the OPA, TAN, and the PCA scores
 shape_ordinary_procrustes <- function(reference_shape, eigenvectors = NULL, shape) {
-  # perform OPA
+  # Perform OPA
   opa <- procOPA(reference_shape, shape, scale = TRUE, reflect = FALSE)
-
-
-
-
-
-
-
-
-
-
-
 
   # Save the rotated shape (matrix)
   opa$rotated <- opa$Bhat
