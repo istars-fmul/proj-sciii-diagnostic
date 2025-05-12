@@ -11,7 +11,7 @@ To access the datasets—comprising a cohort of 655 Class III patients of Caucas
 
 ## Project overview
 
-We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipynb``) and further analyse the reliability of the annotated anatomical landmarks (``step2_annotation_reliability.ipynb``). 
+We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipynb``) and further analyse the reliability of the annotated anatomical landmarks (``step2_annotation_reliability.ipynb``). Following a geometric morphometrics approach, we used Generalized Procrustes Analysis (``step3_generalized_procrustes_analysis.ipynb``)
 
 
 ## Directory structure
@@ -25,6 +25,7 @@ We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipy
 ├── notebooks          <- Jupyter notebooks.
 |                       step1_dataset_exploration.ipynb
 |                       step2_annotation_reliability.ipynb
+|                       step3_generalized_procrustes_analysis.ipynb
 │
 ├── outputs            <- Results from models/analysis go here, like figures, metrics, or
 │			  predictions
