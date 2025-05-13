@@ -93,3 +93,204 @@ reverse_list <- function(points_list) {
   }
   return(reversed_correspondence)
 }
+
+
+
+# plot_mshapes function: plot multiple shapes
+# Input:
+#     - mean_shapes: list of shapes to plot
+#     - color: list of colors for each mean shape
+#     - mshape_labels: list of labels for each mean shape
+#     - joinlines: list of lines to join in the plot
+#     - line_width: width of the lines (default = 1)
+# Output:
+#     - plotly plot
+plot_mshapes <- function(shapes, color, shape_labels, joinlines, line_width = 1, plot_title = NULL){
+  # Initialize plot
+  p <- plot_ly()
+  # Determine x and y axis range
+  all_coords <- do.call(rbind, shapes)
+  x_y_range <- range(all_coords) + c(-10, 10)
+
+
+  for (f in seq_along(shapes)){
+    for (i in seq_along(joinlines)){
+      showlegend = FALSE #if (i==1){showlegend=TRUE} else{showlegend=FALSE}
+      mshape <- shapes[[f]]
+      p <- add_trace(p,
+        x = mshape[joinlines[[i]], 1],
+        y = mshape[joinlines[[i]], 2],
+        type = "scatter",
+        mode = "lines + markers",
+        marker = list(color = color[f], size = line_width * 2, symbol = "cross"),
+        line = list(color = color[f], width = line_width),
+        showlegend = showlegend,
+        name = shape_labels[f])
+        }
+  }
+  p <- layout(p,
+            font = list(size = 19, family = "Helvetica"),
+            title = list(text = plot_title, font = list(size = 40, family = "Helvetica"), x = 0.5, y=-0.5, xanchor = "center", yanchor = "center"),
+            xaxis = list(range = x_y_range, title = "X", titlefont = list(size = 19, family = "Helvetica"), tickfont = list(size = 16, family = "Helvetica")),
+            yaxis = list(range = x_y_range, title = "Y",  titlefont = list(size = 19, family = "Helvetica"), tickfont = list(size = 16, family = "Helvetica")))
+  # Display the plot
+  return(p)
+}
+
+# add_sd_polygons function: add standard deviation polygons to the plot
+# Input:
+#       - plot: plotly plot
+#       - rotated coordinates: array of rotated coordinates 
+#       - fill_color: color of the polygons (default = "rgba(128, 18, 12, 0.3)")
+# Output:
+#       - plotly plot with polygons
+add_sd_polygons <- function(plot, rotated_array, fill_color = "rgba(128, 18, 12, 0.3)") {
+  # Compute mean shape for the selected cluster
+  mean_shape <- apply(rotated_array, c(1, 2), mean)
+  # Compute standard deviation across the cluster shapes
+  rotated_sd <- apply(rotated_array, c(1, 2), sd)
+  
+  # Construct polygons for each landmark
+  polygon_x <- cbind(mean_shape[, 1] - rotated_sd[, 1],
+                     mean_shape[, 1] + rotated_sd[, 1],
+                     mean_shape[, 1] + rotated_sd[, 1],
+                     mean_shape[, 1] - rotated_sd[, 1])
+  
+  polygon_y <- cbind(mean_shape[, 2] - rotated_sd[, 2],
+                     mean_shape[, 2] - rotated_sd[, 2],
+                     mean_shape[, 2] + rotated_sd[, 2],
+                     mean_shape[, 2] + rotated_sd[, 2])
+  
+  # Add each polygon to the plot
+  for (r in 1:nrow(mean_shape)) {
+    plot <- plot %>% 
+      plotly::add_polygons(
+        x = polygon_x[r, ],
+        y = polygon_y[r, ],
+        type = "scatter",
+        mode = "lines",
+        fill = "toself",
+        fillcolor = fill_color,
+        line = list(color = "transparent"),
+        showlegend = FALSE
+      )
+  }
+  return(plot)
+}
+
+
+
+# compute_distance_centroid function: compute the distance of each sample to each corresponding cluster centroid
+# Input:
+#       - res_cluster: eclust object with values; $cluster; $data; $centers
+# Output:
+#       - vector with the distance to centroid per sample
+compute_distance_centroid <- function(res_cluster) {
+      distance <- c()
+      clusters <- res_cluster$cluster
+      for (p in seq_along(clusters)){
+          c <- clusters[p]
+          d <- sqrt(sum((res_cluster$data[p, ] - res_cluster$centers[c,])^2))
+          distance <- c(distance, d)
+      }
+      return (distance)
+    }
+
+# create_cv_folds function: create cross-validation folds
+# Input:
+#       - cv_stratify: stratify the sampling based on a variable
+#       - set_seed: set the random seed for reproducibility
+#       - n_folds: number of folds
+#       - df: dataframe to sample from
+#       - verbose: print fold distribution for checking
+# Output:
+#       - vector with the fold number for each sample
+create_cv_folds <- function(cv_stratify = NULL, set_seed = 123, n_folds = 5, df = NULL, verbose = FALSE) {
+    # Set the random seed for reproducibility
+    set.seed(set_seed)
+    
+    if (!is.null(cv_stratify)) {
+        # Stratified sampling using createFolds
+        folds <- createFolds(cv_stratify, k = n_folds, list = FALSE)
+        if (verbose) {
+            print("--Sampling--")
+            # Print the first 5 fold counts for checking
+            print(table(folds))
+        }
+    } else {
+        # Random sampling if cv_stratify is NULL
+        folds <- sample(1:n_folds, nrow(df), replace = TRUE)
+        if (verbose) {
+            print("--Sampling--")
+            # Print fold distribution for checking
+            print(table(folds))
+        }
+    }
+    
+    return(folds)
+}
+
+# cluster_matching function: match clusters from two different clusterings using the Hungarian algorithm
+# Input:
+#       - cluster_from: vector of cluster assignments
+#       - cluster_to: vector of cluster assignments
+#       - verbose: print the matching results if TRUE
+# Output:
+#       - list with the matching results
+cluster_matching <- function(cluster_from, cluster_to, verbose = FALSE) {
+  # Ensure input vectors have names for matching
+  if (is.null(names(cluster_from)) || is.null(names(cluster_to))) {
+    stop("Both cluster vectors must have names corresponding to sample identifiers.")
+  }
+
+  # Merge clusters based on names
+  common_names <- intersect(names(cluster_from), names(cluster_to))
+  if (length(common_names) == 0) {
+    stop("No matching sample names found between the two cluster vectors.")
+  }
+
+  merged_clusters <- data.frame(
+    cluster_1 = cluster_from[common_names],
+    cluster_2 = cluster_to[common_names]
+  )
+
+  # Create contingency table (cross-tabulation)
+  cont_table <- table(merged_clusters$cluster_1, merged_clusters$cluster_2)
+
+  # Convert contingency table to a matrix
+  cost_matrix <- as.matrix(cont_table)
+
+  # Use Hungarian algorithm (solve_LSAP) to find the optimal matching
+  assignment <- solve_LSAP(cost_matrix, maximum = TRUE)  # Maximizing the match
+
+  # Calculate the matching score
+  matching_score <- sum(cost_matrix[cbind(assignment, 1:length(assignment))]) / sum(cost_matrix)
+
+  # Print the results if verbose is TRUE
+  if (verbose) {
+    cat("Matching from cluster 1 to cluster 2:\n")
+    print(assignment)
+    cat("\nMatching score: ", matching_score, "\n")
+  }
+
+  # Return results
+  return(list(
+    map = assignment,
+    cont_table = cont_table,
+    matching_score = matching_score))
+}
+
+# cluster_mapping function: map clusters from one clustering to another using the matching results
+# Input:
+#       - clusters: vector of cluster assignments
+#       - map: matching results from cluster_matching function
+# Output:
+#       - vector of mapped cluster assignments
+cluster_mapping <- function(clusters, map) {
+  # Use map to map clusters in 'clusters' from cluster2 to cluster1
+  transformed_clusters <- sapply(clusters, function(x) map[x])
+
+  # Preserve the original names of the vector (indexing is kept intact)
+  names(transformed_clusters) <- names(clusters)
+  return(transformed_clusters)
+}
