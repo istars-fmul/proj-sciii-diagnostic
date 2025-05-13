@@ -4,12 +4,12 @@ library(clue) # for cluster matching (solve lsap)
 
 # euclidean_distance function: compute the euclidean distance between two points
 # Input:
-#       - x: first point
-#       - y: second point
+#       - p1: first point - a vector of coordinates
+#       - p2: second point - a vector of coordinates
 # Output:
 #       - euclidean distance
-euclidean_distance <- function(x, y) {
-  sqrt(sum((x - y)^2, na.rm = TRUE))
+euclidean_distance <- function(p1, p2) {
+  sqrt(sum((p1 - p2)^2, na.rm = TRUE))
 }
 
 # gini function: compute the Gini coefficient
