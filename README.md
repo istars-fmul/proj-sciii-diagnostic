@@ -11,7 +11,7 @@ To access the datasets—comprising a cohort of 655 Class III patients of Caucas
 
 ## Project overview
 
-We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipynb``) and further analyse the reliability of the annotated anatomical landmarks (``step2_annotation_reliability.ipynb``). Following a geometric morphometrics approach, we used Generalized Procrustes Analysis (``step3_generalized_procrustes_analysis.ipynb``)
+We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipynb``) and further analyse the reliability of the annotated anatomical landmarks (``step2_annotation_reliability.ipynb``). Following a geometric morphometrics approach, we used Generalized Procrustes Analysis (``step3_generalized_procrustes_analysis.ipynb``). Finally, we present the results of the clustering analysis and introduce six subphenotypes of skeletal Class III malocclusion (``step4_clustering_analysis.ipynb``). Other notebooks also include the analyses conducted for algorithm selection (``step4.1_clustering_algorithms.ipynb``), as well as, robustness assessment and subphenotype assignment for new samples (``step4.2_cross_validation.ipynb``, ``step4.3_clustering_prediction_korean_population.ipynb``).
 
 
 ## Directory structure
@@ -26,6 +26,10 @@ We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipy
 |                       step1_dataset_exploration.ipynb
 |                       step2_annotation_reliability.ipynb
 |                       step3_generalized_procrustes_analysis.ipynb
+|                       step4_clustering_analysis.ipynb
+|                       step4.1_clustering_algorithms.ipynb
+|                       step4.2_cross_validation.ipynb
+|                       step4.3_clustering_prediction_korean_population.ipynb    
 │
 ├── outputs            <- Results from models/analysis go here, like figures, metrics, or
 │			  predictions

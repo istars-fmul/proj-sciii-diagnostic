@@ -81,6 +81,27 @@ get_anatomical_lines <- function(config) {
   return(anatomical_lines)
 }
 
+# get_anatomy_part_of_landmarks function: get the anatomical line of anatomical landmark 
+# Input:
+#       - config: configuration object
+#       - coordinates: coordinates of the landmarks (list of names)
+# Output:
+#       - get the anatomical line (eg. cranial base, maxilla, mandible) of the coordinates
+get_anatomy_part_of_landmarks <- function(config, coordinates) {
+  # Get Landmarks and corresponding anatomical lines
+  land_anatomy <- reverse_list(config$anatomical_lines)
+
+  coord_anatomy <- list()
+  # Get the anatomical lines of the coordinates
+  for (coordinate in coordinates) {
+    # Remove Prefix from the coordinates
+    land <- gsub("^(X_|Y_)", "", coordinate)
+    # Get the anatomical line of the landmark
+    coord_anatomy[[coordinate]] <- land_anatomy[[land]]
+  }
+  return(coord_anatomy)
+}
+
 # reverse_list function: takes a named list of groups with correspondence to points and returns a named list of points with correspondence to groups
 # This is usefull to get the anatomical line of coordinates and the category of cephalometric variables
 reverse_list <- function(points_list) {
