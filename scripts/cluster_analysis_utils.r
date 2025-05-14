@@ -6,47 +6,6 @@ library(tidyr)
 library(ggplot2)
 library(pheatmap)
 
-# plot_wilcox_adjusted_pheatmap function: Plot a heatmap of adjusted p-values from Wilcoxon tests
-# Input: 
-# - table_cluster_stats_wilcox: Data frame containing the results of the Wilcoxon tests
-# - color_scheme: Color scheme for the heatmap (default: c("lightyellow", "red"))
-# - cutoff: Cutoff value for the p-values (default: NULL)
-# - output_path: Path to save the heatmap (default: NULL)
-# Output: Heatmap of adjusted p-values
-plot_wilcox_adjusted_pheatmap <- function(table_cluster_stats_wilcox, color_scheme = c("lightyellow", "red"), cutoff = NULL, output_path = NULL) {
-  # Pivot the data to have features as rows and comparisons as columns
-  p_adjusted_pivot <- table_cluster_stats_wilcox %>%
-    pivot_wider(
-      values_from = log_p_adjusted,
-      id_cols = feature,
-      names_from = comparison
-    )
-
-  # Set feature as row names
-  p_adjusted_pivot <- p_adjusted_pivot %>%
-    column_to_rownames(var = "feature")
-
-  # Apply statistical test (-log10 values) with a lower cutoff (if specified)
-  p_adjusted_pivot <- apply(p_adjusted_pivot, c(1, 2), function(x) ifelse(x < -log10(0.05), NA, x))
-
-  # Plot heatmap with adjusted p-values
-  heatmap_p_adjusted <- pheatmap(t(as.matrix(p_adjusted_pivot)),
-            color = colorRampPalette(color_scheme)(50),
-            na_col = "grey",
-            main = "Wilcoxon test -log10(adjusted p-value)",
-            cluster_rows = TRUE,
-            cluster_cols = FALSE,
-            legend = TRUE,
-            angle_col = 90,
-            fontsize = 18
-  )
-  # Save the plot if an output path is specified
-  if (!is.null(output_path)) {
-       save_pheatmap_pdf(heatmap_p_adjusted, output_path, width = 20, height = 10)
-  }
-
-  return(heatmap_p_adjusted)
-}
 
 # feature_cluster_stats_t_test function: Perform a Wilcoxon rank sum test for each feature between clusters
 # Input: data - a data frame containing the feature values for each sample
@@ -97,6 +56,48 @@ cluster_stats_wilcox <- function(data, partition) {
   stats_test_df$mean_is_different <- stats_test_df$p_adjusted < 0.05
   
   return(stats_test_df %>% arrange(comparison, feature))
+}
+
+# plot_wilcox_adjusted_pheatmap function: Plot a heatmap of adjusted p-values from Wilcoxon tests
+# Input:
+# - table_cluster_stats_wilcox: Data frame containing the results of the Wilcoxon tests (result from cluster_stats_wilcox function or similar)
+# - color_scheme: Color scheme for the heatmap (default: c("lightyellow", "red"))
+# - cutoff: Cutoff value for the p-values (default: NULL)
+# - output_path: Path to save the heatmap (default: NULL)
+# Output: Heatmap of adjusted p-values
+plot_wilcox_adjusted_pheatmap <- function(table_cluster_stats_wilcox, color_scheme = c("lightyellow", "red"), cutoff = NULL, output_path = NULL) {
+  # Pivot the data to have features as rows and comparisons as columns
+  p_adjusted_pivot <- table_cluster_stats_wilcox %>%
+    pivot_wider(
+      values_from = log_p_adjusted,
+      id_cols = feature,
+      names_from = comparison
+    )
+
+  # Set feature as row names
+  p_adjusted_pivot <- p_adjusted_pivot %>%
+    column_to_rownames(var = "feature")
+
+  # Apply statistical test (-log10 values) with a lower cutoff (if specified)
+  p_adjusted_pivot <- apply(p_adjusted_pivot, c(1, 2), function(x) ifelse(x < -log10(0.05), NA, x))
+
+  # Plot heatmap with adjusted p-values
+  heatmap_p_adjusted <- pheatmap(t(as.matrix(p_adjusted_pivot)),
+            color = colorRampPalette(color_scheme)(50),
+            na_col = "grey",
+            main = "Wilcoxon test -log10(adjusted p-value)",
+            cluster_rows = TRUE,
+            cluster_cols = FALSE,
+            legend = TRUE,
+            angle_col = 90,
+            fontsize = 18
+  )
+  # Save the plot if an output path is specified
+  if (!is.null(output_path)) {
+       save_pheatmap_pdf(heatmap_p_adjusted, output_path, width = 20, height = 10)
+  }
+
+  return(heatmap_p_adjusted)
 }
 
 # heatmap_aov_cluster function: generate a heatmap of AOV results per cluster

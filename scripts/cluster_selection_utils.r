@@ -15,7 +15,7 @@ source("scripts/utils.R") # load utils functions
 # df with metrics for the considering clustering method 
 compute_clustering <- function(df, fun_cluster, hc_metric, hc_method = NULL, k, balanced_membership_threshold = 80) {
   # Compute distance matrix
-   distance_res <- dist(df, method = 'euclidean')
+  distance_res <- dist(df, method = 'euclidean')
   # Perform clustering
   clust_res <- eclust(df, FUNcluster = fun_cluster, hc_metric = hc_metric, hc_method = hc_method, k = k, graph = FALSE)
   

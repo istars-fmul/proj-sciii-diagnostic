@@ -547,7 +547,8 @@ perform_cross_validation_knn <- function(df, cv_stratify_factors = NULL, fun_clu
 
 # format_cross_validation_results function: format the cross-validation results
 # Input:
-#       - df_cv_knn: data frame with cross-validation results
+#       - df_cv_knn: data frame with cross-validation results (obtained from perform_cross_validation_knn function or equivalent)
+#       - output_path: path to save the formatted results
 # Output:
 #       - data frame with formatted cross-validation results
 format_cross_validation_results <- function(df_cv_knn, output_path = NULL) {
@@ -567,7 +568,7 @@ format_cross_validation_results <- function(df_cv_knn, output_path = NULL) {
 
 # plot_cross_validation_knn function: generate a plot of cross-validation results for KNN
 # Input:
-#       - df_cv_knn: data frame with cross-validation results for KNN
+#       - df_cv_knn: data frame with cross-validation results for KNN (obtained from perform_cross_validation_knn function or equivalent)
 #       - output_path: path to save the plot
 # Output:
 #       - ggplot object of the cross-validation plot
