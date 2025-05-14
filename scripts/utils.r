@@ -206,16 +206,20 @@ add_sd_polygons <- function(plot, rotated_array, fill_color = "rgba(128, 18, 12,
 #       - res_cluster: eclust object with values; $cluster; $data; $centers
 # Output:
 #       - vector with the distance to centroid per sample
-compute_distance_centroid <- function(res_cluster) {
-      distance <- c()
-      clusters <- res_cluster$cluster
-      for (p in seq_along(clusters)){
-          c <- clusters[p]
-          d <- sqrt(sum((res_cluster$data[p, ] - res_cluster$centers[c,])^2))
-          distance <- c(distance, d)
-      }
-      return (distance)
-    }
+compute_distance_centroid <- function(cluster_result) {
+  distances <- c()
+  cluster_assignments <- cluster_result$cluster
+
+  for (i in seq_along(cluster_assignments)) {
+    cluster <- cluster_assignments[i]
+    point <- cluster_result$data[i, ]
+    centroid <- cluster_result$centers[cluster, ]
+    euclidean_distance <- sqrt(sum((point - centroid)^2))
+    distances <- c(distances, euclidean_distance)
+  }
+
+  return(distances)
+}
 
 # create_cv_folds function: create cross-validation folds
 # Input:
