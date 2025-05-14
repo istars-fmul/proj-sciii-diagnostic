@@ -119,7 +119,7 @@ reverse_list <- function(points_list) {
 
 # plot_mshapes function: plot multiple shapes
 # Input:
-#     - mean_shapes: list of shapes to plot
+#     - shapes: list of shapes to plot
 #     - color: list of colors for each mean shape
 #     - mshape_labels: list of labels for each mean shape
 #     - joinlines: list of lines to join in the plot

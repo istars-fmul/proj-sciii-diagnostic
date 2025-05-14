@@ -40,7 +40,7 @@ compute_clustering <- function(df, fun_cluster, hc_metric, hc_method = NULL, k, 
     average_between = cluster_stat$average.between, average_within = cluster_stat$average.within,
     entropy = cluster_stat$entropy, persongamma = cluster_stat$pearsongamma, wb_ratio = cluster_stat$wb.ratio, gini_index = gini(perc_membership),
     max_perc_membership = max(perc_membership), min_perc_membership = min(perc_membership), 
-    median_perc_membership = median(perc_membership), check_balance_treshold = balanced_membership, min_max_membership_ratio = min_max_membership_ratio
+    median_perc_membership = median(perc_membership), check_balance_threshold = balanced_membership, min_max_membership_ratio = min_max_membership_ratio
   ), cluster = clust_res$cluster))
 }
 
