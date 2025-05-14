@@ -1,7 +1,7 @@
 library(clValid)  # compute connectivity
 library(fpc)
 library(factoextra) # eclust function
-source("scripts/utils.R") # load utils functions
+source("scripts/utils.r") # load utils functions
 
 # compute_clustering_selection function: this function computes clustering metrics for a given dataset and clustering method.
 # Input: 
