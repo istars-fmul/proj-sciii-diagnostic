@@ -186,11 +186,12 @@ generate_umap_plot <- function(df, df_group, group_label = "Group", color_mappin
         font = list(family = "Helvetica", size = 15)  # Set font for the legend
       )
     )
-  return(p)
 
+  # Save the plot if a path is provided
   if (!is.null(path)) {
     save_image_svg(p, output_path = path, width = 600, height = 500)
     }
+  return(p)
 }
 
 # generate_mean_sd_cluster function: generate a data frame with mean and standard deviation for each cluster
