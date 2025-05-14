@@ -18,9 +18,6 @@ We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipy
 ```
 ├── README.md          <- The top-level README for developers using this project.
 │
-├── docker             <- Dockerfile and VM configs to run the project
-│
-├── logs               <- Log files go here
 │
 ├── notebooks          <- Jupyter notebooks.
 |                       step1_dataset_exploration.ipynb
@@ -31,26 +28,78 @@ We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipy
 |                       step4.2_cross_validation.ipynb
 |                       step4.3_clustering_prediction_korean_population.ipynb    
 │
-├── outputs            <- Results from models/analysis go here, like figures, metrics, or
-│			  predictions
+├── outputs            <- Results from models/analysis go here, like figures, metrics, or predictions
 │
 ├── config.yaml        <- config file with parameters for running the pipelines
 │
-├── pipelines          <- pipelines for the project
-│
-├── resources          <- other resources used by the project, such as SQL queries
-│
-├── scripts	       <- scripts developed that are related to this project 
-│
-└──src                <- Source code for use in this project.
+└─── scripts	       <- scripts developed that are related to this project 
+
 
 ```
+Here's a cleaned-up and improved version of your **Step-by-step instructions** section, with corrected grammar, clearer formatting, and LaTeX-compatible language:
 
-## Prerequisites
+---
 
-## Install dependencies
+## Step-by-step Instructions
 
-## Usage
+### 🔧 1. Install & Configure Environment
+
+* Make sure you have **R** installed. Recommended version:
+  `R version 4.4.3 (2025-02-28)`
+* Install **Conda** (via [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/))
+* Install **Jupyter** and the **R kernel**:
+
+```r
+Rscript -e "install.packages('IRkernel'); IRkernel::installspec()"
+```
+
+---
+
+### 📂 2. Clone the Repository
+
+Use the terminal to clone the GitHub repository:
+
+```verbatim
+git clone https://github.com/istars-fmul/proj-sciii-diagnostic.git
+cd proj-sciii-diagnostic
+```
+
+---
+
+### 📦 3. Set Up the Conda Environment
+
+Move to the root of the project directory (where `environment.yml` is located), then run:
+
+```verbatim
+conda env create -f environment.yml
+```
+
+This will create a new Conda environment named:
+**`r_env_sciii_diagnosis`**
+
+---
+
+### ▶️ 4. Activate the Environment
+
+```verbatim
+conda activate r_env_sciii_diagnosis
+```
+
+---
+
+### 📁 5. Include the Dataset
+
+To reproduce the results in this repository, a `data/` folder must be present in the project root. This folder should contain:
+
+* **Cephalometric measurements dataset**
+* **Landmark coordinate dataset**
+* **Patient info dataset**
+
+If need change the path in the `config.yml` file. 
+
+These datasets can be downloaded from the following link:
+**\[Insert Dataset Download Link Here]**
+
 
 ## Credentials
 
