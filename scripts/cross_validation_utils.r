@@ -163,14 +163,6 @@ get_testing_clusters <- function(indices = NULL, df, gpa, type = "tan", set_seed
   testing_results$cluster  <- fitted(model_kknn)
   testing_results$probability <- model_kknn$prob
   rownames(testing_results$probability) <- rownames(testing_results$test_data)
-
-  # TODO: delete this
-  #df_train <- as.data.frame(X_train)
-  #df_train$Cluster <- factor(y_train)
-  #colnames(testing_results$test_data) <- colnames(X_train)
-  #model <- kknn(Cluster~., df_train, testing_results$test_data, k = n_nearst_neighbours, distance = 2, kernel = "rectangular", scale = FALSE)
-  #testing_results$cluster <- fitted(model)
-
   return(testing_results)
 }
 
