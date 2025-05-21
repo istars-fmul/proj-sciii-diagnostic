@@ -151,12 +151,13 @@ get_testing_clusters <- function(indices = NULL, df, gpa, type = "tan", set_seed
 
   df_train <- as.data.frame(X_train)
   df_train$Cluster <- factor(y_train)
+  testing_results$test_data <- as.data.frame(testing_results$test_data)
 
   knn_params <- modifyList(default_knn_params, knn_params)
   knn_input <- modifyList(knn_params, list(
     train = df_train,
     test = testing_results$test_data,
-    formula = Cluster ~ .
+    formula = formula(Cluster ~ .)
   ))
   
   model_kknn <- do.call(kknn::kknn, knn_input)
