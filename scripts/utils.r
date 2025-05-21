@@ -124,11 +124,14 @@ reverse_list <- function(points_list) {
 #     - mshape_labels: list of labels for each mean shape
 #     - joinlines: list of lines to join in the plot
 #     - line_width: width of the lines (default = 1)
+#     - plot_title: title of the plot (default = NULL)
+#     - width: width of the plot (default = 500)
+#     - height: height of the plot (default = 500)
 # Output:
 #     - plotly plot
-plot_mshapes <- function(shapes, color, shape_labels, joinlines, line_width = 1, plot_title = NULL){
+plot_mshapes <- function(shapes, color, shape_labels, joinlines, line_width = 1, plot_title = NULL, width = 500, height = 500){
   # Initialize plot
-  p <- plot_ly()
+  p <- plot_ly(width = width, height = height)
   # Determine x and y axis range
   all_coords <- do.call(rbind, shapes)
   x_y_range <- range(all_coords) + c(-10, 10)
