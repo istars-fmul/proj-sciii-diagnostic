@@ -36,8 +36,6 @@ We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipy
 
 
 ```
-Here's a cleaned-up and improved version of your **Step-by-step instructions** section, with corrected grammar, clearer formatting, and LaTeX-compatible language:
-
 ---
 
 ## Step-by-step Instructions
