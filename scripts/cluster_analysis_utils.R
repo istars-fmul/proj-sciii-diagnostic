@@ -233,7 +233,7 @@ generate_mean_sd_cluster <- function(df, cluster, path) {
 #       - y_var: y-axis variable name
 # Output:
 #       - ggplot object of the violin plot
-violin_plot_function <- function(df, color_mapping, group_var = "Measurement", y_label ="Ceohalometric Variable", output_path = NULL, width = 15, height = 20) {
+violin_plot_function <- function(df, color_mapping, group_var = "Measurement", y_label ="Cephalometric Variable", output_path = NULL, width = 15, height = 20) {
   # Ensure Cluster is a factor
   df$Cluster <- as.factor(df$Cluster)
 
