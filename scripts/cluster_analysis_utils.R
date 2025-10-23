@@ -145,7 +145,7 @@ heatmap_aov_cluster <- function(df, cluster, annotation_col, annotation_colors, 
 }
 # generate_umap_plot function: generate a plot of UMAP with color by group
 # Input:
-#       - df: data frame with UMAP layout (UMAP1, UMAP2)
+#       - df: data to compute the umap representation
 #       - df_group: data frame with group information
 #       - group_label: column name of the group information
 #       - color_mapping: list of colors for the groups
