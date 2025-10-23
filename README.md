@@ -7,11 +7,11 @@ We provide a comprehensive evaluation of clustering robustness through a cross-v
 
 Further details on the methodology and findings are described in the associated publication: **LINK**
 
-To access the datasets—comprising a cohort of 655 Class III patients of Caucasian origin (used for training) and an external dataset of 96 patients of Asian origin—please visit the following link: **LINK**
+To access the datasets—comprising a cohort of 655 Class III patients of Caucasian origin (used for training) and an external dataset of 186 patients of Asian origin and 85 Caucasian origin - please request access from the corresponding authors via the link below.
 
 ## Project overview
 
-We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipynb``) and further analyse the reliability of the annotated anatomical landmarks (``step2_annotation_reliability.ipynb``). Following a geometric morphometrics approach, we used Generalized Procrustes Analysis (``step3_generalized_procrustes_analysis.ipynb``). Finally, we present the results of the clustering analysis and introduce six subphenotypes of skeletal Class III malocclusion (``step4_clustering_analysis.ipynb``). Other notebooks also include the analyses conducted for algorithm selection (``step4.1_clustering_algorithms.ipynb``), as well as, robustness assessment and subphenotype assignment for new samples (``step4.2_cross_validation.ipynb``, ``step4.3_clustering_prediction_korean_population.ipynb``).
+We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipynb``) and further analyse the reliability of the annotated anatomical landmarks (``step2_annotation_reliability.ipynb``). Following a geometric morphometrics approach, we used Generalized Procrustes Analysis (``step3_generalized_procrustes_analysis.ipynb``). Finally, we present the results of the clustering analysis and introduce six subphenotypes of skeletal Class III malocclusion (``step4_clustering_analysis.ipynb``). Other notebooks also include the analyses conducted for algorithm selection (``step4.1_clustering_algorithms.ipynb``), as well as, robustness assessment and subphenotype assignment for new samples (``step4.2_cross_validation.ipynb``, ``step4.3_clustering_prediction_korean_population.ipynb``, ``step4.4_clustering_prediction_caucasian_external_population.ipynb``).
 
 
 ## Directory structure
@@ -26,7 +26,8 @@ We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipy
 |                       step4_clustering_analysis.ipynb
 |                       step4.1_clustering_algorithms.ipynb
 |                       step4.2_cross_validation.ipynb
-|                       step4.3_clustering_prediction_korean_population.ipynb    
+|                       step4.3_clustering_prediction_korean_population.ipynb
+|                       step4.4_clustering_prediction_caucasian_external_population.ipynb    
 │
 ├── outputs            <- Results from models/analysis go here, like figures, metrics, or predictions
 │
@@ -95,8 +96,6 @@ To reproduce the results in this repository, a `data/` folder must be present in
 
 If need change the path in the `config.yml` file. 
 
-These datasets can be downloaded from the following link:
-**\[Insert Dataset Download Link Here]**
 
 
 ## Credentials
