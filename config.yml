@@ -3,22 +3,22 @@
 # Paths with the data for the project
 dataset:
         # Cephalometric measurements data
-        cephalometric_measurements: 'data/caucasian/cephalometric_measurements.csv'
+        cephalometric_measurements: 'data/white/cephalometric_measurements.csv'
         cephalometric_measurements_korean: 'data/korean/korean_cephalometric_measurements.csv'
-        cephalometric_measurements_caucasian_external: 'data/caucasian_external/caucasian_cephalometric_measurements.csv'
+        cephalometric_measurements_white_external: 'data/white_external/white_cephalometric_measurements.csv'
     
         # Annotated landmark coordinates data
-        landmark_coordinates: 'data/caucasian/landmark_coordinates.csv'
+        landmark_coordinates: 'data/white/landmark_coordinates.csv'
         landmark_coordinates_korean: 'data/korean/korean_landmark_coordinates.csv'
-        landmark_coordinates_caucasian_external: 'data/caucasian_external/caucasian_landmark_coordinates.csv'
+        landmark_coordinates_white_external: 'data/white_external/white_landmark_coordinates.csv'
 
         # Patient information data
-        patient_info: 'data/caucasian/patient_info.csv'
+        patient_info: 'data/white/patient_info.csv'
         patient_info_korean : 'data/korean/korean_patient_info.csv'
-        patient_info_caucasian_external: 'data/caucasian_external/caucasian_patient_info.csv'
+        patient_info_white_external: 'data/white_external/white_patient_info.csv'
 
         # Duplicated landmark coordinates data to infer the reliability of the annotated coordinates
-        coord_annotation_reliability: 'data/caucasian/check_coord_reliability.csv'
+        coord_annotation_reliability: 'data/white/check_coord_reliability.csv'
 
 # Lettering for the project
 style: 
