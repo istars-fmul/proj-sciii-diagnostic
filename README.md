@@ -1,4 +1,4 @@
-# proj-sciii-diagnostic
+# Geometric morphometrics based diagnostic model for Skeletal Class III patients 
 This project aims to develop a data-driven approach to standardize the diagnosis of Class III skeletal malocclusion (SCIII). We use landmark coordinates annotated from lateral cephalometric radiographs to cluster patients based on craniofacial morphology.
 
 We preprocess the data using geometric morphometric techniques, specifically Generalized Procrustes Analysis (GPA), and apply k-means clustering (with k=6) using a reduced set of 12 key anatomical landmarks.. Additionally, we explore other clustering algorithms and different values of k.
@@ -7,11 +7,11 @@ We provide a comprehensive evaluation of clustering robustness through a cross-v
 
 Further details on the methodology and findings are described in the associated publication: **LINK**
 
-To access the datasets—comprising a cohort of 655 Class III patients of Caucasian origin (used for training) and an external dataset of 186 patients of Asian origin and 85 Caucasian origin - please request access from the corresponding authors via the link below.
+To access the datasets—comprising a cohort of 655 Class III patients of White origin (used for training) and an external dataset of 186 patients of Korean origin and 85 White origin - please request access from the corresponding authors via the link below.
 
 ## Project overview
 
-We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipynb``) and further analyse the reliability of the annotated anatomical landmarks (``step2_annotation_reliability.ipynb``). Following a geometric morphometrics approach, we used Generalized Procrustes Analysis (``step3_generalized_procrustes_analysis.ipynb``). Finally, we present the results of the clustering analysis and introduce six subphenotypes of skeletal Class III malocclusion (``step4_clustering_analysis.ipynb``). Other notebooks also include the analyses conducted for algorithm selection (``step4.1_clustering_algorithms.ipynb``), as well as, robustness assessment and subphenotype assignment for new samples (``step4.2_cross_validation.ipynb``, ``step4.3_clustering_prediction_korean_population.ipynb``, ``step4.4_clustering_prediction_caucasian_external_population.ipynb``).
+We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipynb``) and further analyse the reliability of the annotated anatomical landmarks (``step2_annotation_reliability.ipynb``). Following a geometric morphometrics approach, we used Generalized Procrustes Analysis (``step3_generalized_procrustes_analysis.ipynb``). Finally, we present the results of the clustering analysis and introduce six subphenotypes of skeletal Class III malocclusion (``step4_clustering_analysis.ipynb``). Other notebooks also include the analyses conducted for algorithm selection (``step4.1_clustering_algorithms.ipynb``), as well as, robustness assessment and subphenotype assignment for new samples (``step4.2_cross_validation.ipynb``, ``step4.3_clustering_prediction_korean_population.ipynb``, ``step4.4_clustering_prediction_white_external_population.ipynb``).
 
 
 ## Directory structure
@@ -27,7 +27,7 @@ We start by  exploring our dataset of 655 SCIII (``step1_dataset_exploration.ipy
 |                       step4.1_clustering_algorithms.ipynb
 |                       step4.2_cross_validation.ipynb
 |                       step4.3_clustering_prediction_korean_population.ipynb
-|                       step4.4_clustering_prediction_caucasian_external_population.ipynb    
+|                       step4.4_clustering_prediction_white_external_population.ipynb    
 │
 ├── outputs            <- Results from models/analysis go here, like figures, metrics, or predictions
 │
@@ -101,3 +101,7 @@ If need change the path in the `config.yml` file.
 ## Credentials
 
 ## Contact
+For questions, feedback, or collaboration, feel free to reach out:
+
+- Email: ines.c@edu.ulisboa.pt
+- Website: https://istars.pt/
