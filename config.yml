@@ -1,0 +1,98 @@
+# This is the configuration file for the project sciii-diagnosis
+
+# Paths with the data for the project
+dataset:
+        # Cephalometric measurements data
+        cephalometric_measurements: 'data/white/cephalometric_measurements.csv'
+        cephalometric_measurements_korean: 'data/korean/korean_cephalometric_measurements.csv'
+        cephalometric_measurements_white_external: 'data/white_external/white_cephalometric_measurements.csv'
+    
+        # Annotated landmark coordinates data
+        landmark_coordinates: 'data/white/landmark_coordinates.csv'
+        landmark_coordinates_korean: 'data/korean/korean_landmark_coordinates.csv'
+        landmark_coordinates_white_external: 'data/white_external/white_landmark_coordinates.csv'
+
+        # Patient information data
+        patient_info: 'data/white/patient_info.csv'
+        patient_info_korean : 'data/korean/korean_patient_info.csv'
+        patient_info_white_external: 'data/white_external/white_patient_info.csv'
+
+        # Duplicated landmark coordinates data to infer the reliability of the annotated coordinates
+        coord_annotation_reliability: 'data/white/check_coord_reliability.csv'
+
+# Lettering for the project
+style: 
+    family: 'Helvetica'
+    size: 12
+    title_size: 16
+    color: 'black'
+
+# Colors for the project
+colors:
+    gender: 
+        F: "pink"
+        M: "lightblue"
+    cluster: 
+        1: '#1B9E77'
+        2: '#D95F02'
+        3: '#7570B3'
+        4: '#E7298A'
+        5: '#66A61E'
+        6: '#E6AB02'
+    treatment: 
+        non-surgery: "blue"
+        surgery: "red"
+    anatomical_lines:
+        cranial_base: "violet"
+        maxilla: "orange"
+        mandible: "lightgreen"
+    measurement_type: 
+        angular: "violet"
+        linear: "lightgreen"
+        proportion: "orange"
+
+# Selected landmarks for the project
+selected_landmark:
+    - Sella
+    - Basion
+    - PNS
+    - A Point
+    - B Point
+    - Pogonion
+    - Menton
+    - Gonion
+    - Ramus Point
+    - Distal Aspect of Condyle
+    - Condylion
+    - Nasion
+
+# Selected landmarks for representing anatomical structures
+anatomical_lines:
+    cranial_base:
+        - Nasion
+        - Sella
+        - Basion
+    maxilla:
+        - PNS
+        - A Point
+    mandible: 
+        - B Point
+        - Pogonion
+        - Menton
+        - Gonion
+        - Ramus Point
+        - Distal Aspect of Condyle
+        - Condylion
+
+# Cluster parameters
+clustering_parameters:
+    n_clusters: 6
+    fun_cluster: 'kmeans'
+    hc_metric: 'euclidean'
+    hc_method: NULL
+
+# Clustering parameters for the cross-validation
+clustering_cross_validation: 
+    n_folds: 5
+    n_nearst_neighbours: 25
+    random_state: 42
