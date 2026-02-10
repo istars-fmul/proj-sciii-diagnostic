@@ -97,11 +97,14 @@ To reproduce the results in this repository, a `data/` folder must be present in
 If need change the path in the `config.yml` file. 
 
 
-
-## Credentials
-
 ## Contact
 For questions, feedback, or collaboration, feel free to reach out:
 
 - Email: ines.c@edu.ulisboa.pt
 - Website: https://istars.pt/
+
+
+
+## License
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+
