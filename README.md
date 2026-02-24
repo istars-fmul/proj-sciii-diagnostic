@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18754656.svg)](https://doi.org/10.5281/zenodo.18754656)
+
 # Geometric morphometrics based diagnostic model for Skeletal Class III patients 
 This project aims to develop a data-driven approach to standardize the diagnosis of Class III skeletal malocclusion (SCIII). We use landmark coordinates annotated from lateral cephalometric radiographs to cluster patients based on craniofacial morphology.
 
