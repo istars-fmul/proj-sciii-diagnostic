@@ -99,13 +99,32 @@ To reproduce the results in this repository, a `data/` folder must be present in
 If need change the path in the `config.yml` file. 
 
 
+## SCIII Diagnostic Tool Web Interface
+
+To compute and obtain the subphenotype, you can use our [online application](https://tools.istars.pt/sciii/). Please ensure that your input Excel file containing the annotated landmarks is in the correct format.
+
+## Citation 
+
+
 ## Contact
+
 For questions, feedback, or collaboration, feel free to reach out:
 
-- Email: ines.c@edu.ulisboa.pt
-- Website: https://istars.pt/
+**iStars Team:**
 
+* Inês M. N. Carvalho: [ines.c@edu.ulisboa.pt](mailto:ines.c@edu.ulisboa.pt)
+* João C. Guimarães: [joao.guimaraes@medicina.ulisboa.pt](mailto:joao.guimaraes@medicina.ulisboa.pt)
+
+**Website:** [https://istars.pt/](https://istars.pt/)
+
+
+**Clinical team:**
+
+* Maria Cristina Faria-Teixeira: [cristina.vft@gmail.com](mailto:cristina.vft@gmail.com)
+* Alejandro Iglesias-Linares: [aleigl01@ucm.es](mailto:aleigl01@ucm.es)
 
 
 ## License
-This work is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en).
+
+This software is available under the [European Union Public Licence (EUPL) v1.2 or later](https://eupl.eu/1.2/en/). For proprietary use, commercial support, or alternative licensing terms, please contact the authors.
+
