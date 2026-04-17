@@ -1,4 +1,5 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18755167.svg)](https://doi.org/10.5281/zenodo.18755167)
+[![DOI](https://img.shields.io/badge/DOI-10.1038%2Fs43856--026--01557--y-blue)](https://doi.org/10.1038/s43856-026-01557-y)
+[![zenodo](https://zenodo.org/badge/DOI/10.5281/zenodo.18755167.svg)](https://doi.org/10.5281/zenodo.18755167)
 
 # Geometric morphometrics based diagnostic model for Skeletal Class III patients 
 This project aims to develop a data-driven approach to standardize the diagnosis of Class III skeletal malocclusion (SCIII). We use landmark coordinates annotated from lateral cephalometric radiographs to cluster patients based on craniofacial morphology.
@@ -7,7 +8,7 @@ We preprocess the data using geometric morphometric techniques, specifically Gen
 
 We provide a comprehensive evaluation of clustering robustness through a cross-validation framework, and implement a K-Nearest Neighbors (KNN) classifier to assign new patients to clusters; And interpretation of the obtained subphenotypes carried out in close collaboration with clinical experts in the field.
 
-Further details on the methodology and findings are described in the associated publication: **LINK**
+Further details on the methodology and findings are described in the associated publication: https://doi.org/10.1038/s43856-026-01557-y
 
 To access the datasets—comprising a cohort of 655 Class III patients of White origin (used for training) and an external dataset of 186 patients of Korean origin and 85 White origin - please request access from the corresponding authors via the link below.
 
@@ -105,6 +106,9 @@ To compute and obtain the subphenotype, you can use our [online application](htt
 
 ## Citation 
 
+```text
+Faria-Teixeira, M.C., Carvalho, I.M.N., Dehesa-Santos, A. et al. Geometric morphometrics based diagnostic model for Skeletal Class III patients. Commun Med (2026). https://doi.org/10.1038/s43856-026-01557-y
+```
 
 ## Contact
 
